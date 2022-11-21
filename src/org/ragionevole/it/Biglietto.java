@@ -83,6 +83,9 @@ public class Biglietto {
 	public double calcolaPrezzo() {
 		double totPrice = COST_PER_KM.doubleValue() * km;
 		
+		if(!(flessibile)) {
+			totPrice += totPrice * 0.10;
+		}
 		
 		final double totPriceDiscounted = totPrice - calcolaSconto(totPrice, age);
 		
@@ -92,25 +95,15 @@ public class Biglietto {
 	// calcolo dello sconto
 	private double calcolaSconto(double n, int age) {
 		
-		if(!(flessibile)) {
+		
 			
 			if(age < 18) {
-				return n * (UNDER_18_DISCOUNT.doubleValue();
-			}else if(age >= 65) {
-				return n * (OVER_65_DISCOUNT.doubleValue(); 
-			}else {
-				return 0;
-			}
-		}
-		else {
-			if(age < 18) {
-				return n * UNDER_18_DISCOUNT.doubleValue() ;
+				return n * UNDER_18_DISCOUNT.doubleValue();
 			}else if(age >= 65) {
 				return n * OVER_65_DISCOUNT.doubleValue(); 
 			}else {
 				return 0;
 			}
-		}
 		
 		
 	}
